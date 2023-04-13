@@ -1,0 +1,40 @@
+{
+  "squadName": "Noche Terror",
+  "Location": "Calle 13 # 16-86",
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "nombre": "Dracula",
+      "edad": 1000,
+      "identidad": "Bram Stoker",
+      "habilidades": [
+        "Chupa sangre",
+        "convertirse en murcielago",
+        "Desaparecerse"
+      ]
+    },
+    {
+      "nombre": "La Momia ",
+      "edad": 0,
+      "identidad": "El Mudo",
+      "habilidades": [
+        "Puro Polvo",
+        "No le duele nada",
+        "Muy tieso"
+      ]
+    },
+    {
+      "nombre": "  Frankestein ",
+      "edad": 0,
+      "identidad": "Sin cerebro",
+      "habilidades": [
+        "inmortalidad",
+        "De Gran Tamaño",
+        "Cerebro tostado",
+        "No muere",
+        "Se le pueden cambiar partes"
+      ]
+    }
+  ]
+}
