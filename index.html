@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <style>
+      html {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+      }
+
+      body {
+        width: 80%;
+        margin: 0 auto;
+        background-image: url(https://th.bing.com/th/id/R.c0f993959e412a8a839f4c04e944b0c2?rik=6%2f%2f2F%2b2mUJ8Ubg&riu=http%3a%2f%2fwww.slate.fr%2fsites%2fdefault%2ffiles%2fstyles%2f1060x523%2fpublic%2fskull_0.jpg&ehk=%2bypnzjMgpjMz9QLRTnr0l2kUdS2Uq5qKot6ROydKxRU%3d&risl=&pid=ImgRaw&r=0);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: black;
+        filter: brightness(10);
+      }
+
+      h1,
+      h2 {
+        font-family: 'Nosifer', cursive;
+        color: #C00000;
+        text-decoration: underline;
+
+
+      }
+
+      /* header styles */
+
+      h1 {
+        font-size: 500%;
+        text-align: right;
+      }
+
+
+      header p {
+        color: beige;
+        font-size: 200%;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: underline;
+        text-decoration-color: #C00000;
+      }
+
+      /* section styles */
+
+      section article {
+        width: 33%;
+        float: left;
+        color: azure;
+        padding: 1px;
+        filter: brightness(0.1);
+
+
+
+      }
+
+      section p {
+        margin: 5px 0;
+
+      }
+
+      section ul {
+        margin-top: 10;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        letter-spacing: -6px;
+        margin-bottom: 10px;
+      }
+
+
+
+
+      @media (min-width:1250px) {
+
+        body {
+
+          background-size: 100%;
+
+        }
+
+        h1 {
+          font-size: 500%;
+        }
+
+        h2 {
+          font-size: 400%;
+        }
+
+        header p {
+          font-size: 200%;
+        }
+
+        section article {
+          font-size: 80%;
+
+        }
+
+      }
+
+      @media (max-width:1200px) {
+
+        body {
+
+          background-size: 100%;
+
+        }
+
+        h1 {
+          font-size: 450%;
+        }
+
+        h2 {
+          font-size: 290%;
+        }
+
+        header p {
+          font-size: 180%;
+        }
+
+        section article {
+          font-size: 80%;
+          width: 30%;
+        }
+
+      }
+
+      @media (max-width:1000px) {
+
+        body {
+
+          background-size: 100%;
+
+        }
+
+        h1 {
+          font-size: 400%;
+        }
+
+        h2 {
+          font-size: 290%;
+        }
+
+        header p {
+          font-size: 150%;
+        }
+
+        section article {
+          font-size: 65%;
+          width: 30%;
+        }
+
+      }
+
+      @media (max-width:900px) {
+
+        body {
+
+          background-size: 100%;
+
+        }
+
+        h1 {
+          font-size: 310%;
+        }
+
+        h2 {
+          font-size: 290%;
+        }
+
+        header p {
+          font-size: 130%;
+        }
+
+        section article {
+          font-size: 65%;
+          width: 30%;
+        }
+
+      }
+
+      @media (max-width:700px) {
+
+        body {
+
+          background-size: 100%;
+
+        }
+
+        h1 {
+          font-size: 230%;
+        }
+
+        h2 {
+          font-size: 280%;
+        }
+
+        header p {
+          font-size: 100%;
+        }
+
+        section article {
+          font-size: 60%;
+          width: 30%;
+        }
+
+      }
+
+      @media (max-width:600px) {
+
+        body {
+
+          background-size: 100%;
+
+        }
+
+        h1 {
+          font-size: 200%;
+        }
+
+        h2 {
+          font-size: 260%;
+        }
+
+        header p {
+          font-size: 60%;
+        }
+
+        section article {
+          font-size: 50%;
+          width: 30%;
+        }
+
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+
+    </header>
+
+    <section>
+
+    </section>
+
+    <script>
+
+      async function populate() {
+
+        const requestURL = 'https://raw.githubusercontent.com/Jramoz08/PaginaJs/gh-pages/superheroes.json';
+        const request = new Request(requestURL);
+
+        const response = await fetch(request);
+        const superHeroes = await response.json();
+
+        populateHeader(superHeroes);
+        populateHeroes(superHeroes);
+
+      }
+
+      function populateHeader(obj) {
+        const header = document.querySelector('header');
+        const myH1 = document.createElement('h1');
+        myH1.textContent = obj.squadName;
+        header.appendChild(myH1);
+
+        const myPara = document.createElement('p');
+        myPara.textContent = `Direccion: ${obj.Location}`;
+        header.appendChild(myPara);
+      }
+
+      function populateHeroes(obj) {
+        const section = document.querySelector('section');
+        const heroes = obj.members;
+
+        for (const hero of heroes) {
+          const myArticle = document.createElement('article');
+          const myH2 = document.createElement('h2');
+          const myPara1 = document.createElement('p');
+          const myPara2 = document.createElement('p');
+          const myPara3 = document.createElement('p');
+          const myList = document.createElement('ul');
+
+          myH2.textContent = hero.nombre;
+          myPara1.textContent = `Identidad: ${hero.identidad}`;
+          myPara2.textContent = `Edad: ${hero.edad}`;
+          myPara3.textContent = 'Habilidades:';
+
+          const superPowers = hero.habilidades;
+          for (const power of superPowers) {
+            const listItem = document.createElement('li');
+            listItem.textContent = power;
+            myList.appendChild(listItem);
+          }
+
+          myArticle.appendChild(myH2);
+          myArticle.appendChild(myPara1);
+          myArticle.appendChild(myPara2);
+          myArticle.appendChild(myPara3);
+          myArticle.appendChild(myList);
+
+          section.appendChild(myArticle);
+        }
+      }
+
+      populate();
+
+    </script>
+  </body>
+
+</html>
